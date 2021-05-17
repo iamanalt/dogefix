@@ -7,11 +7,11 @@ listeners.send.push((_ws: WebSocket, item) => {
 		if (obj.op === 'send_room_chat_msg') {
 			for (const token of obj.d.tokens) {
 				if (token.t === 'emote') {
-					token.d = token.d.replace(/[^a-z0-9]+/gi, '');
+					token.v = token.v.replace(/[^a-z0-9]+/gi, '');
 				}
 			}
 		}
-		return JSON.stringify(item);
+		return JSON.stringify(obj);
 	} catch (error) {
 		return item;
 	}
