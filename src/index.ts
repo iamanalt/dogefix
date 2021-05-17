@@ -1,7 +1,9 @@
+import fix_emotes from './modules/fix_emotes';
 import socket from './modules/socket';
 
 const DogeFix = {
-	socket,
+	fix_emotes,
+socket,
 }
 
 Object.assign(window, {
