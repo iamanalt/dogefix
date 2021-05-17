@@ -18,7 +18,7 @@ Object.assign(window, {
 run(
 	'nslibmgr make clean',
 	'browserify -o lib/bun.js lib/index.js',
-	'minify lib/bun.js >dogefix.js',
+	'minify lib/bun.js >lib/min.js',
 ).then(async () => {
 	write('./manifest.json', {
 		name: 'DogeSuite',
@@ -37,4 +37,17 @@ run(
 			],
 		}],
 	});
-});
+}).then(async () => {
+	fs.writeFileSync('dogefix.js', `
+;(function() {
+
+	function inject() {
+		const script = document.createElement('script')
+		script.text = \`${fs.readFileSync('./lib/min.js', 'utf8').replace(/[\`]+/gi, '\\`')}\`
+		document.documentElement.appendChild(script)
+	}
+
+	inject();
+})()
+	`)
+})

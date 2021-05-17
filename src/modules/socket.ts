@@ -12,10 +12,13 @@ export const listeners: {
 	send: [],
 }
 
-class OurWebSocket implements WebSocket {
+const RealWebSocket = WebSocket;
+
+class OurWebSocket extends EventTarget implements WebSocket {
 	private _websocket;
 	constructor (address: string, options?: string | string[] | undefined) {
-		this._websocket = new WebSocket(address, options);
+		super();
+		this._websocket = new RealWebSocket(address, options);
 	}
 	get binaryType () {
 		return this._websocket.binaryType;
@@ -127,4 +130,10 @@ Object.assign(OurWebSocket, {
 	default: OurWebSocket,
 	OurWebSocket,
 	listeners,
+});
+
+Object.assign(window, {
+	OurWebSocket,
+	WebSocket: OurWebSocket,
+	RealWebSocket
 });
