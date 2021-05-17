@@ -4,7 +4,7 @@
 	"version": "1.0.0",
 	"main": "lib/index.js",
 	"scripts": {
-		"build": "npx nslibmgr make clean && browserify -o lib/bun.js lib/index.js && minify lib/bun.js >lib/min.js"
+		"build": "node lib/build"
 	},
 	"author": "Josh && Prokop",
 	"license": "GPL-3.0-or-later",
