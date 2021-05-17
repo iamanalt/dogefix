@@ -21,11 +21,11 @@ run(
 	'minify lib/bun.js >dogefix.js',
 ).then(async () => {
 	write('./manifest.json', {
-		name: "DogeSuite",
-		version: "1.1",
+		name: 'DogeSuite',
+		version: '1.1',
 		manifest_version: 2,
 		web_accessible_resources: [
-			"*"
+			'*',
 		],
 		content_scripts: [{
 			run_at: "document_start",
@@ -34,7 +34,7 @@ run(
 			],
 			js: [
 				"dogefix.js"
-			]
-		}]
+			],
+		}],
 	});
 });
