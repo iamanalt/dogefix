@@ -12,11 +12,10 @@ export const listeners: {
 	send: [],
 }
 
-class OurWebSocket {
+class OurWebSocket implements WebSocket {
 	private _websocket;
 	constructor (address: string, options?: string | string[] | undefined) {
 		this._websocket = new WebSocket(address, options);
-		this._websocket.addEventListener
 	}
 	get binaryType () {
 		return this._websocket.binaryType;
@@ -115,6 +114,9 @@ class OurWebSocket {
 	}
     removeEventListener<K extends keyof WebSocketEventMap>(type: K, listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any, options?: boolean | EventListenerOptions) {
 		return this._websocket.removeEventListener(type, listener, options);
+	}
+	dispatchEvent (event: Event) {
+		return this._websocket.dispatchEvent(event);
 	}
 }
 
