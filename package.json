@@ -1,0 +1,27 @@
+{
+	"name": "dogefix",
+	"description": "Fixes for DogeHouse",
+	"version": "1.0.0",
+	"main": "lib/index.js",
+	"scripts": {
+		"build": "npx nslibmgr make clean && browserify -o lib/bun.js lib/index.js && minify lib/bun.js >lib/min.js"
+	},
+	"author": "Josh && Prokop",
+	"license": "GPL-3.0-or-later",
+	"devDependencies": {
+		"@types/node": ">=14"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/josh-codes/dogefix.git"
+	},
+	"keywords": [],
+	"bugs": {
+		"url": "https://github.com/josh-codes/dogefix/issues"
+	},
+	"homepage": "https://github.com/josh-codes/dogefix#readme",
+	"dependencies": {
+		"doge-config": "^0.2.4",
+		"doge-utils": "^0.1.0"
+	}
+}
