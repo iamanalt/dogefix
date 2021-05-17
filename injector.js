@@ -1,5 +1,5 @@
 let script = document.createElement('script');
-script.src = "https://dogehouse.eu/addon/inject.js";
+script.src = chrome.extension.getURL('injected.js');
 script.onload = function() {
     this.parentNode.removeChild(this);
 };
